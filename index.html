@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/10177d54da.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./style.css">
+        <title>Kontakty</title>
+    </head>
+    <body>
+        <div class="phone">
+            <form action="">
+                <div class="text">Dodaj kontakt</div>
+                <input type="text" name="nazwaKontaktu" placeholder="Nazwa kontaktu">
+                <input type="text" name="nrTel" placeholder="Numer telefonu">
+                <div class="buttons">
+                    <input type="submit" value="Dodaj kontakt">
+                    <input type="reset" value="Anuluj">
+                </div>
+            </form>
+            <div class="app">
+                <div class="header">
+                    <div class="nazwaAplikacji"><i class="fa-solid fa-address-book"></i>Kontakty</div>
+                    <div class="przyciski">
+                        <div class="wyszukiwarka">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" placeholder="Szukaj...">
+                        </div>
+                        <button id="dodaj"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                </div>
+                <div class="kontaktyBox">
+                    <!-- <div class="kontaktBox">
+                        <div class="img"><i class="fa-solid fa-user"></i></div>
+                        <div class="name">Imię i nazwisko</div>
+                        <div class="phoneNumber">Numer telefonu</div>
+                        <div class="delete">
+                            <button>Usuń</button>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <script src="./KontaktyApp.js"></script>
+        <script src="./Kontakt.js"></script>
+        <script>
+            const kontakty = new KontaktyApp();
+            const form = document.querySelector('form');
+
+            const buttonDodaj = document.querySelector('button#dodaj')
+            buttonDodaj.addEventListener('click', function() {
+                form.style.display = 'flex';
+            })
+
+            form.addEventListener('reset', function() {
+                form.style.display = 'none';
+            })
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const input_nazwaKontaktu = document.querySelector('input[name="nazwaKontaktu"]')
+                const input_numerTelefonu = document.querySelector('input[name="nrTel"]')
+
+                const nazwaKontaktu = input_nazwaKontaktu.value;
+                const numerTelefonu = input_numerTelefonu.value;
+
+                if (nazwaKontaktu !== '' && numerTelefonu !== '') {
+                    let ostatnieId = kontakty.pobierzOstatnieId();
+                    let noweId = ostatnieId + 1;
+
+                    kontakty.dodajKontakt(new Kontakt(noweId, nazwaKontaktu, numerTelefonu));
+                    kontakty.wyswietlKontakty('poDodaniu');
+                    przyciskiUsuniecie();
+                    form.style.display = 'none';
+                    form.reset();
+                } else {
+                    form.innerHTML += '<div style="margin-top: 10px; color: white; font-family: Arial; font-size: 14px;">Musisz podać wszystkie dane!</div>'
+                }
+            })
+
+            const input_szukaj = document.querySelector('.wyszukiwarka input')
+            input_szukaj.addEventListener('input', function(e) {
+                kontakty.szukajKontakt(e.target.value);
+            })
+
+            function przyciskiUsuniecie() {
+                const buttons = document.querySelectorAll('.kontaktBox .delete button')
+                buttons.forEach(element => {
+                    element.addEventListener('click', function() {
+                        kontakty.usunKontakt(element.dataset.id);
+                        kontakty.wyswietlKontakty('poUsunieciu');
+                        przyciskiUsuniecie();
+                    })
+                })
+            }
+        </script>
+    </body>
+</html>

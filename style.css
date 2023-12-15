@@ -1,0 +1,197 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.phone {
+    width: 260px;
+    height: 500px;
+    border: 10px solid rgb(0, 0, 0);
+    border-radius: 30px;    
+    background-image: url('./wallpaper.jpg');
+    background-size: cover;
+    position: relative;
+}
+
+form {
+    display: none;
+    position: absolute;
+    width: 260px;
+    height: 500px;
+    backdrop-filter: blur(4px);
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 2;
+}
+
+form .text {
+    color: white;
+    font-family: Arial;
+}
+
+form input[type="text"] {
+    outline: none;
+    border: none;
+    margin: 10px;
+    height: 25px;
+    border-radius: 20px;
+    padding: 2px;
+    padding-left: 5px;
+    background-color: rgb(60, 60, 75);
+    color: white;
+}
+
+input::placeholder {
+    color: rgb(185, 185, 185);
+}
+
+form div.buttons {
+    display: flex;
+}
+
+form div.buttons > input {
+    margin: 5px;
+    background-color: rgb(60, 60, 75);
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 7px;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+}
+
+form div.buttons > input:hover {
+    background-color: rgb(85, 85, 107);
+}
+
+.nazwaAplikacji {
+    width: 100%;
+    height: 40px;
+    /* background-color: red; */
+    font-family: Arial;
+    font-size: 15px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nazwaAplikacji i {
+    margin-right: 4px;
+}
+
+.przyciski {    
+    width: 100%;
+    height: 30px;
+    /* background-color: orange; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.przyciski button {
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    outline: none;
+    border: none;
+    color: white;
+    /* background-color: aqua; */
+    background-color: rgb(60, 60, 75);
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+}
+
+.przyciski button:hover {
+    background-color: rgb(85, 85, 107);
+}
+
+.przyciski .wyszukiwarka {
+    width: 78%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 30px;
+    /* background-color: aquamarine; */
+    background-color: rgb(60, 60, 75);
+    color: white;
+}
+
+.przyciski .wyszukiwarka input {
+    width: 80%;
+    color: white;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid white;
+}
+
+.kontaktyBox {
+    margin-top: 20px;
+    height: 390px;
+    /* background-color: red; */
+    overflow-y: auto;
+}
+
+.kontaktBox {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    font-family: Arial;
+    font-size: 14px;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+}
+
+.kontaktBox i {
+    border: 3px solid white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kontaktBox {
+    margin-bottom: 5px;
+}
+
+.kontaktBox .dataBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.kontaktBox .dataBox .phoneNumber {
+    font-size: 12px;
+    color: rgb(199, 199, 199);
+}
+
+.kontaktBox .delete button {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.kontaktBox .delete button i {
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(141, 7, 7);
+    color: white;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+}
+
+.kontaktBox .delete button i:hover {
+    background-color: rgb(177, 10, 10);
+}
